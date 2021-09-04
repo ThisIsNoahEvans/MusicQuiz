@@ -43,6 +43,10 @@ def createProfile():
         except: # Error with value - likely entered non-numeric characters
             print('You didn\'t enter a valid PIN code. Try again.')
     
+    config = open('config.json', 'w') # Open the config file
+    data = json.load(config) # Load the file contents as JSON
+    data['users']
+    
     print(f'Welcome, {name}! Let\'s get you into your first game.')
 
 # The main menu

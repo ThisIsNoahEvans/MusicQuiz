@@ -1,0 +1,13 @@
+{
+    "users": [
+        {
+            "id": 0,
+            "name": "NoahEvans",
+            "topScore": 0,
+            "gamesPlayed": 0,
+            "correctSongs": [
+                1, 2, 3
+            ]
+        }
+    ]
+}

@@ -1,0 +1,602 @@
+[
+    {
+      "id": 1,
+      "title": "WILD",
+      "artist": "Troye Sivan",
+      "album": "Blue Neighbourhood"
+    },
+    {
+      "id": 2,
+      "title": "Love Me",
+      "artist": "The 1975",
+      "album": "I like it when you sleep, for you are so beautiful yet so unaware of it"
+    },
+    {
+      "id": 3,
+      "title": "Sober",
+      "artist": "Lorde",
+      "album": "Melodrama"
+    },
+    {
+      "id": 4,
+      "title": "UGH!",
+      "artist": "The 1975",
+      "album": "I like it when you sleep, for you are so beautiful yet so unaware of it"
+    },
+    {
+      "id": 5,
+      "title": "Green Light",
+      "artist": "Lorde",
+      "album": "Melodrama"
+    },
+    {
+      "id": 6,
+      "title": "Overdrive",
+      "artist": "Conan Gray",
+      "album": "Overdrive - Single"
+    },
+    {
+      "id": 7,
+      "title": "A Change of Heart",
+      "artist": "The 1975",
+      "album": "I like it when you sleep, for you are so beautiful yet so unaware of it"
+    },
+    {
+      "id": 8,
+      "title": "Somebody Else",
+      "artist": "The 1975",
+      "album": "I like it when you sleep, for you are so beautiful yet so unaware of it"
+    },
+    {
+      "id": 9,
+      "title": "The Louvre",
+      "artist": "Lorde",
+      "album": "Melodrama"
+    },
+    {
+      "id": 10,
+      "title": "Royals",
+      "artist": "Lorde",
+      "album": "Pure Heroine (Extended)"
+    },
+    {
+      "id": 11,
+      "title": "She's American",
+      "artist": "The 1975",
+      "album": "I like it when you sleep, for you are so beautiful yet so unaware of it"
+    },
+    {
+      "id": 12,
+      "title": "Buzzcut Season",
+      "artist": "Lorde",
+      "album": "Pure Heroine (Extended)"
+    },
+    {
+      "id": 13,
+      "title": "Loving Someone",
+      "artist": "The 1975",
+      "album": "I like it when you sleep, for you are so beautiful yet so unaware of it"
+    },
+    {
+      "id": 14,
+      "title": "BITE",
+      "artist": "Troye Sivan",
+      "album": "Blue Neighbourhood"
+    },
+    {
+      "id": 15,
+      "title": "Stupid Love",
+      "artist": "Lady Gaga",
+      "album": "Chromatica"
+    },
+    {
+      "id": 16,
+      "title": "Writer In the Dark",
+      "artist": "Lorde",
+      "album": "Melodrama"
+    },
+    {
+      "id": 17,
+      "title": "Bloom",
+      "artist": "Troye Sivan",
+      "album": "Bloom"
+    },
+    {
+      "id": 18,
+      "title": "Checkmate",
+      "artist": "Conan Gray",
+      "album": "Kid Krow"
+    },
+    {
+      "id": 19,
+      "title": "Seventeen",
+      "artist": "Troye Sivan",
+      "album": "Bloom"
+    },
+    {
+      "id": 20,
+      "title": "Million Dollar Bills",
+      "artist": "Lorde",
+      "album": "Pure Heroine (Extended)"
+    },
+    {
+      "id": 21,
+      "title": "Fight or Flight",
+      "artist": "Conan Gray",
+      "album": "Kid Krow"
+    },
+    {
+      "id": 22,
+      "title": "Maniac",
+      "artist": "Conan Gray",
+      "album": "Kid Krow"
+    },
+    {
+      "id": 23,
+      "title": "Liability",
+      "artist": "Lorde",
+      "album": "Melodrama"
+    },
+    {
+      "id": 24,
+      "title": "Getaway Car",
+      "artist": "Taylor Swift",
+      "album": "reputation"
+    },
+    {
+      "id": 25,
+      "title": "FOOLS",
+      "artist": "Troye Sivan",
+      "album": "Blue Neighbourhood"
+    },
+    {
+      "id": 26,
+      "title": "You Need To Calm Down",
+      "artist": "Taylor Swift",
+      "album": "Lover"
+    },
+    {
+      "id": 27,
+      "title": "Alice",
+      "artist": "Lady Gaga",
+      "album": "Chromatica"
+    },
+    {
+      "id": 28,
+      "title": "Hard Feelings/Loveless",
+      "artist": "Lorde",
+      "album": "Melodrama"
+    },
+    {
+      "id": 29,
+      "title": "Love Story (Taylor’s Version)",
+      "artist": "Taylor Swift",
+      "album": "Fearless (Taylor's Version)"
+    },
+    {
+      "id": 30,
+      "title": "Team",
+      "artist": "Lorde",
+      "album": "Pure Heroine (Extended)"
+    },
+    {
+      "id": 31,
+      "title": "Tennis Court",
+      "artist": "Lorde",
+      "album": "Pure Heroine (Extended)"
+    },
+    {
+      "id": 32,
+      "title": "Homemade Dynamite",
+      "artist": "Lorde",
+      "album": "Melodrama"
+    },
+    {
+      "id": 33,
+      "title": "Take Yourself Home",
+      "artist": "Troye Sivan",
+      "album": "In A Dream (2020) - EP"
+    },
+    {
+      "id": 34,
+      "title": "Supercut",
+      "artist": "Lorde",
+      "album": "Melodrama"
+    },
+    {
+      "id": 35,
+      "title": "I Did Something Bad",
+      "artist": "Taylor Swift",
+      "album": "reputation"
+    },
+    {
+      "id": 36,
+      "title": "STUD",
+      "artist": "Troye Sivan",
+      "album": "In A Dream (2020) - EP"
+    },
+    {
+      "id": 37,
+      "title": "Rager teenager!",
+      "artist": "Troye Sivan",
+      "album": "In A Dream (2020) - EP"
+    },
+    {
+      "id": 38,
+      "title": "Lover",
+      "artist": "Taylor Swift",
+      "album": "Lover"
+    },
+    {
+      "id": 39,
+      "title": "IN A DREAM",
+      "artist": "Troye Sivan",
+      "album": "In A Dream (2020) - EP"
+    },
+    {
+      "id": 40,
+      "title": "The Good Side",
+      "artist": "Troye Sivan",
+      "album": "Bloom"
+    },
+    {
+      "id": 41,
+      "title": "The Sound",
+      "artist": "The 1975",
+      "album": "I like it when you sleep, for you are so beautiful yet so unaware of it"
+    },
+    {
+      "id": 42,
+      "title": "Comfort Crowd",
+      "artist": "Conan Gray",
+      "album": "Kid Krow"
+    },
+    {
+      "id": 43,
+      "title": "White Teeth Teens",
+      "artist": "Lorde",
+      "album": "Pure Heroine (Extended)"
+    },
+    {
+      "id": 44,
+      "title": "Heather",
+      "artist": "Conan Gray",
+      "album": "Kid Krow"
+    },
+    {
+      "id": 45,
+      "title": "cardigan",
+      "artist": "Taylor Swift",
+      "album": "folklore (deluxe version)"
+    },
+    {
+      "id": 46,
+      "title": "Ribs",
+      "artist": "Lorde",
+      "album": "Pure Heroine (Extended)"
+    },
+    {
+      "id": 47,
+      "title": "400 Lux",
+      "artist": "Lorde",
+      "album": "Pure Heroine (Extended)"
+    },
+    {
+      "id": 48,
+      "title": "Wildest Dreams",
+      "artist": "Taylor Swift",
+      "album": "1989 (Deluxe Edition)"
+    },
+    {
+      "id": 49,
+      "title": "Perfect Places",
+      "artist": "Lorde",
+      "album": "Melodrama"
+    },
+    {
+      "id": 50,
+      "title": "Lucky Strike",
+      "artist": "Troye Sivan",
+      "album": "Bloom"
+    },
+    {
+      "id": 51,
+      "title": "Animal",
+      "artist": "Troye Sivan",
+      "album": "Bloom"
+    },
+    {
+      "id": 52,
+      "title": "Glory and Gore",
+      "artist": "Lorde",
+      "album": "Pure Heroine (Extended)"
+    },
+    {
+      "id": 53,
+      "title": "King of My Heart",
+      "artist": "Taylor Swift",
+      "album": "reputation"
+    },
+    {
+      "id": 54,
+      "title": "A World Alone",
+      "artist": "Lorde",
+      "album": "Pure Heroine (Extended)"
+    },
+    {
+      "id": 55,
+      "title": "Easy (feat. Mark Ronson)",
+      "artist": "Troye Sivan & Kacey Musgraves",
+      "album": "Easy (feat. Mark Ronson) - Single"
+    },
+    {
+      "id": 56,
+      "title": "Still Sane",
+      "artist": "Lorde",
+      "album": "Pure Heroine (Extended)"
+    },
+    {
+      "id": 57,
+      "title": "HEAVEN (feat. Betty Who)",
+      "artist": "Troye Sivan",
+      "album": "Blue Neighbourhood"
+    },
+    {
+      "id": 58,
+      "title": "What a Heavenly Way to Die",
+      "artist": "Troye Sivan",
+      "album": "Bloom"
+    },
+    {
+      "id": 59,
+      "title": "Don’t Blame Me",
+      "artist": "Taylor Swift",
+      "album": "reputation"
+    },
+    {
+      "id": 60,
+      "title": "The Love Club",
+      "artist": "Lorde",
+      "album": "Pure Heroine (Extended)"
+    },
+    {
+      "id": 61,
+      "title": "Blank Space",
+      "artist": "Taylor Swift",
+      "album": "1989 (Deluxe Edition)"
+    },
+    {
+      "id": 62,
+      "title": "The Story",
+      "artist": "Conan Gray",
+      "album": "Kid Krow"
+    },
+    {
+      "id": 63,
+      "title": "The Cut That Always Bleeds",
+      "artist": "Conan Gray",
+      "album": "Kid Krow"
+    },
+    {
+      "id": 64,
+      "title": "Biting Down",
+      "artist": "Lorde",
+      "album": "Pure Heroine (Extended)"
+    },
+    {
+      "id": 65,
+      "title": "This Must Be My Dream",
+      "artist": "The 1975",
+      "album": "I like it when you sleep, for you are so beautiful yet so unaware of it"
+    },
+    {
+      "id": 66,
+      "title": "EASE (feat. Broods)",
+      "artist": "Troye Sivan",
+      "album": "Blue Neighbourhood"
+    },
+    {
+      "id": 67,
+      "title": "Generation Why",
+      "artist": "Conan Gray",
+      "album": "Sunset Season - EP"
+    },
+    {
+      "id": 68,
+      "title": "Easy",
+      "artist": "Troye Sivan",
+      "album": "In A Dream (2020) - EP"
+    },
+    {
+      "id": 69,
+      "title": "Out Of The Woods",
+      "artist": "Taylor Swift",
+      "album": "1989 (Deluxe Edition)"
+    },
+    {
+      "id": 70,
+      "title": "Treacherous",
+      "artist": "Taylor Swift",
+      "album": "Red (Deluxe Version)"
+    },
+    {
+      "id": 71,
+      "title": "Dance to This (feat. Ariana Grande)",
+      "artist": "Troye Sivan",
+      "album": "Bloom"
+    },
+    {
+      "id": 72,
+      "title": "Give Yourself a Try",
+      "artist": "The 1975",
+      "album": "A Brief Inquiry Into Online Relationships"
+    },
+    {
+      "id": 73,
+      "title": "...Ready For It?",
+      "artist": "Taylor Swift",
+      "album": "reputation"
+    },
+    {
+      "id": 74,
+      "title": "Gorgeous",
+      "artist": "Taylor Swift",
+      "album": "reputation"
+    },
+    {
+      "id": 75,
+      "title": "Pink Lemonade",
+      "artist": "James Bay",
+      "album": "Electric Light"
+    },
+    {
+      "id": 76,
+      "title": "Teach Me How To Love",
+      "artist": "Shawn Mendes",
+      "album": "Wonder"
+    },
+    {
+      "id": 77,
+      "title": "Sober II (Melodrama)",
+      "artist": "Lorde",
+      "album": "Melodrama"
+    },
+    {
+      "id": 78,
+      "title": "I Wish You Would",
+      "artist": "Taylor Swift",
+      "album": "1989 (Deluxe Edition)"
+    },
+    {
+      "id": 79,
+      "title": "Bravado",
+      "artist": "Lorde",
+      "album": "Pure Heroine (Extended)"
+    },
+    {
+      "id": 80,
+      "title": "Swingin Party",
+      "artist": "Lorde",
+      "album": "Pure Heroine (Extended)"
+    },
+    {
+      "id": 81,
+      "title": "Postcard (feat. Gordi)",
+      "artist": "Troye Sivan",
+      "album": "Bloom"
+    },
+    {
+      "id": 82,
+      "title": "911",
+      "artist": "Lady Gaga",
+      "album": "Chromatica"
+    },
+    {
+      "id": 83,
+      "title": "10/10",
+      "artist": "Troye Sivan",
+      "album": "In A Dream (2020) - EP"
+    },
+    {
+      "id": 84,
+      "title": "So It Goes...",
+      "artist": "Taylor Swift",
+      "album": "reputation"
+    },
+    {
+      "id": 85,
+      "title": "Dancing With Our Hands Tied",
+      "artist": "Taylor Swift",
+      "album": "reputation"
+    },
+    {
+      "id": 86,
+      "title": "DKLA (feat. Tkay Maidza)",
+      "artist": "Troye Sivan",
+      "album": "Blue Neighbourhood"
+    },
+    {
+      "id": 87,
+      "title": "Grow",
+      "artist": "Conan Gray",
+      "album": "Grow - Single"
+    },
+    {
+      "id": 88,
+      "title": "Call It What You Want",
+      "artist": "Taylor Swift",
+      "album": "reputation"
+    },
+    {
+      "id": 89,
+      "title": "Bad Blood",
+      "artist": "Taylor Swift",
+      "album": "1989 (Deluxe Edition)"
+    },
+    {
+      "id": 90,
+      "title": "Affluenza",
+      "artist": "Conan Gray",
+      "album": "Kid Krow"
+    },
+    {
+      "id": 91,
+      "title": "Rain On Me",
+      "artist": "Lady Gaga & Ariana Grande",
+      "album": "Chromatica"
+    },
+    {
+      "id": 92,
+      "title": "Always Been You",
+      "artist": "Shawn Mendes",
+      "album": "Wonder"
+    },
+    {
+      "id": 93,
+      "title": "The Man",
+      "artist": "Taylor Swift",
+      "album": "Lover"
+    },
+    {
+      "id": 94,
+      "title": "This Love",
+      "artist": "Taylor Swift",
+      "album": "1989 (Deluxe Edition)"
+    },
+    {
+      "id": 95,
+      "title": "My My My!",
+      "artist": "Troye Sivan",
+      "album": "Bloom"
+    },
+    {
+      "id": 96,
+      "title": "Liability (Reprise)",
+      "artist": "Lorde",
+      "album": "Melodrama"
+    },
+    {
+      "id": 97,
+      "title": "Style",
+      "artist": "Taylor Swift",
+      "album": "1989 (Deluxe Edition)"
+    },
+    {
+      "id": 98,
+      "title": "Plum",
+      "artist": "Troye Sivan",
+      "album": "Bloom"
+    },
+    {
+      "id": 99,
+      "title": "THE QUIET",
+      "artist": "Troye Sivan",
+      "album": "Blue Neighbourhood"
+    },
+    {
+      "id": 100,
+      "title": "The Ballad of Me and My Brain",
+      "artist": "The 1975",
+      "album": "I like it when you sleep, for you are so beautiful yet so unaware of it"
+    }
+   ]
