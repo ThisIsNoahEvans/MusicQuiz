@@ -5,9 +5,20 @@
             "name": "NoahEvans",
             "topScore": 0,
             "gamesPlayed": 0,
+            "pin": 1234,
             "correctSongs": [
-                1, 2, 3
+                1,
+                2,
+                3
             ]
+        },
+        {
+            "id": 1,
+            "name": "Noah",
+            "topScore": 0,
+            "gamesPlayed": 0,
+            "pin": 1234,
+            "correctSongs": []
         }
     ]
 }
