@@ -2,6 +2,9 @@ import json # Read JSON data
 import os # Clear the screen
 import sys # Exit the program
 import re # Verify inputs
+import time # Delays 
+
+currentUser = ''
 
 # Clear everything on the screen
 def clearScreen():
@@ -37,7 +40,7 @@ def login():
     validUsername = False
     while not validUsername:
         try:
-            username = input('Enter your username: ')
+            username = input(':: Enter your username: ')
             if username not in usernames:
                 print('Sorry, that isn\'t a registered user.\nIf you haven\'t played MusicQuiz before, get someone who has to log in and add your account.\n')
             else:
@@ -50,8 +53,7 @@ def login():
     validPIN = False
     while not validPIN:
         try:
-            pin = int(input('Enter your PIN: '))
-            print(f'Entered {pin}')
+            pin = int(input(':: Enter your PIN: '))
             if pin != correctPIN:
                 print('Sorry, that isn\'t your PIN. Try again.\n')
             else:
@@ -60,6 +62,9 @@ def login():
             print('There was an error with your input. Try again.\n')
 
     # Run the main menu with the username
+    global currentUser
+    currentUser = username
+    print(currentUser)
     mainMenu(username)
 
             
@@ -87,7 +92,7 @@ def createProfile(fromSetup):
     nameSet = False
     while not nameSet:
         try:
-            name = input('Enter your username: ')
+            name = input(':: Enter your username: ')
             regexp = re.compile('[^0-9a-zA-Z]+') # Compile the RegEx filter of valid chars
             if regexp.search(name): # If the name contains invalid chars
                 print('Sorry, that username contains invalid characters.\nYou can only use alphanumeric characters (A-Z, 1-9).\n')
@@ -99,7 +104,7 @@ def createProfile(fromSetup):
     pinSet = False
     while not pinSet:
         try:
-            pin = int(input('Enter a 4-digit PIN code: ')) # Ask for an int
+            pin = int(input(':: Enter a 4-digit PIN code: ')) # Ask for an int
             if (len(str(pin))) != 4: # PIN is not 4 digits
                 print('Your code wasn\'t 4 digits. Try again.')
             else: # Pin is 4 digits
@@ -141,7 +146,7 @@ def createProfile(fromSetup):
 # To be displayed after setup/a game
 def mainMenu(name):
     clearScreen()
-    print(f'--- MAIN MENU ---\nHi, {name}!\n1 - New Game\n2 - View Top Scores\n3 - Switch Player\n4 - Add Player\n5 - Settings\n6 - Quit')
+    print(f'--- MAIN MENU ---\nHi, {currentUser}!\n1 - New Game\n2 - View Top Scores\n3 - Switch Player\n4 - Add Player\n5 - Settings\n6 - Quit')
     menuInput = False
     while not menuInput:
         try:
@@ -177,13 +182,13 @@ def mainMenu(name):
 
 def settings():
     clearScreen()
-    print(f'--- SETTINGS ---\nChoose an option:\n1 - Configure Game Settings\n2 - Delete Player\n3 - Remove All Data\n4 - About')
+    print(f'--- SETTINGS ---\nChoose an option:\n1 - Change Songs Per Game\n2 - Delete Player\n3 - Remove All Data\n4 - About')
     
     menuInput = False
     while not menuInput:
         try:
             choice = int(input(':: Enter an option: '))
-            if not 1 <= choice <= 5:
+            if not 1 <= choice <= 4:
                 print('That isn\'t a valid option. Try again.')
             else:
                 menuInput = True
@@ -191,16 +196,50 @@ def settings():
             print('That isn\'t a valid option. Try again.')
     
     if choice == 1:
-        pass
+        # Songs Per Game
+        songsPerGame()
     elif choice == 2:
-        # Settings
-        settings()
+        # Delete Player
+        pass
     elif choice == 3:
+        # Remove All Data
         pass
     elif choice == 4:
-        clearScreen()
-        print('Goodbye! Thank you for playing.')
-        sys.exit()
+        # About
+        pass
+
+
+# General settings for gameplay
+def songsPerGame():
+    clearScreen()
+
+    config = open('config.json', 'r') # Open the config file
+    configJSON = json.load(config) # Load the file contents as JSON
+    config.close() # Close the JSON file
+    currentChoice = configJSON['songsPerGame']
+
+    print(f'--- SONGS PER GAME ---\nEach game can have between 5 and 20 songs.\nThe default is 10. Current choice: {currentChoice}.')
+    
+    menuInput = False
+    while not menuInput:
+        try:
+            choice = int(input(':: Pick your game length: '))
+            if not 5 <= choice <= 20:
+                print('Your choice must be between 5 and 20 songs.')
+            else:
+                menuInput = True
+        except:
+            print('That isn\'t a valid option. Try again.')
+
+
+    configJSON['songsPerGame'] = choice # Update the songs per game in the config JSON
+    config = open('config.json', 'w') # Open the config file in write
+    json.dump(configJSON, config) # Dump the updated JSON data
+    config.close() # Close the JSON file
+
+    print(f'\nGames will now last for {choice} songs.\nReturning to the main menu...')
+    time.sleep(1)
+    mainMenu(currentUser)
 
 
 
