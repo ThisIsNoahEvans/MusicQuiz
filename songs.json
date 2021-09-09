@@ -57,7 +57,7 @@
       "id": 10,
       "title": "Royals",
       "artist": "Lorde",
-      "album": "Pure Heroine (Extended)"
+      "album": "Pure Heroine"
     },
     {
       "id": 11,
@@ -69,7 +69,7 @@
       "id": 12,
       "title": "Buzzcut Season",
       "artist": "Lorde",
-      "album": "Pure Heroine (Extended)"
+      "album": "Pure Heroine"
     },
     {
       "id": 13,
@@ -117,7 +117,7 @@
       "id": 20,
       "title": "Million Dollar Bills",
       "artist": "Lorde",
-      "album": "Pure Heroine (Extended)"
+      "album": "Pure Heroine"
     },
     {
       "id": 21,
@@ -177,13 +177,13 @@
       "id": 30,
       "title": "Team",
       "artist": "Lorde",
-      "album": "Pure Heroine (Extended)"
+      "album": "Pure Heroine"
     },
     {
       "id": 31,
       "title": "Tennis Court",
       "artist": "Lorde",
-      "album": "Pure Heroine (Extended)"
+      "album": "Pure Heroine"
     },
     {
       "id": 32,
@@ -255,7 +255,7 @@
       "id": 43,
       "title": "White Teeth Teens",
       "artist": "Lorde",
-      "album": "Pure Heroine (Extended)"
+      "album": "Pure Heroine"
     },
     {
       "id": 44,
@@ -273,13 +273,13 @@
       "id": 46,
       "title": "Ribs",
       "artist": "Lorde",
-      "album": "Pure Heroine (Extended)"
+      "album": "Pure Heroine"
     },
     {
       "id": 47,
       "title": "400 Lux",
       "artist": "Lorde",
-      "album": "Pure Heroine (Extended)"
+      "album": "Pure Heroine"
     },
     {
       "id": 48,
@@ -309,7 +309,7 @@
       "id": 52,
       "title": "Glory and Gore",
       "artist": "Lorde",
-      "album": "Pure Heroine (Extended)"
+      "album": "Pure Heroine"
     },
     {
       "id": 53,
@@ -321,11 +321,11 @@
       "id": 54,
       "title": "A World Alone",
       "artist": "Lorde",
-      "album": "Pure Heroine (Extended)"
+      "album": "Pure Heroine"
     },
     {
       "id": 55,
-      "title": "Easy (feat. Mark Ronson)",
+      "title": "Easy",
       "artist": "Troye Sivan & Kacey Musgraves",
       "album": "Easy (feat. Mark Ronson) - Single"
     },
@@ -333,12 +333,12 @@
       "id": 56,
       "title": "Still Sane",
       "artist": "Lorde",
-      "album": "Pure Heroine (Extended)"
+      "album": "Pure Heroine"
     },
     {
       "id": 57,
-      "title": "HEAVEN (feat. Betty Who)",
-      "artist": "Troye Sivan",
+      "title": "HEAVEN",
+      "artist": "Troye Sivan & Betty Who",
       "album": "Blue Neighbourhood"
     },
     {
@@ -349,7 +349,7 @@
     },
     {
       "id": 59,
-      "title": "Don’t Blame Me",
+      "title": "Don't Blame Me",
       "artist": "Taylor Swift",
       "album": "reputation"
     },
@@ -357,7 +357,7 @@
       "id": 60,
       "title": "The Love Club",
       "artist": "Lorde",
-      "album": "Pure Heroine (Extended)"
+      "album": "Pure Heroine"
     },
     {
       "id": 61,
@@ -381,7 +381,7 @@
       "id": 64,
       "title": "Biting Down",
       "artist": "Lorde",
-      "album": "Pure Heroine (Extended)"
+      "album": "Pure Heroine"
     },
     {
       "id": 65,
@@ -391,8 +391,8 @@
     },
     {
       "id": 66,
-      "title": "EASE (feat. Broods)",
-      "artist": "Troye Sivan",
+      "title": "EASE",
+      "artist": "Troye Sivan & Broods",
       "album": "Blue Neighbourhood"
     },
     {
@@ -421,8 +421,8 @@
     },
     {
       "id": 71,
-      "title": "Dance to This (feat. Ariana Grande)",
-      "artist": "Troye Sivan",
+      "title": "Dance to This",
+      "artist": "Troye Sivan & Ariana Grande",
       "album": "Bloom"
     },
     {
@@ -471,18 +471,18 @@
       "id": 79,
       "title": "Bravado",
       "artist": "Lorde",
-      "album": "Pure Heroine (Extended)"
+      "album": "Pure Heroine"
     },
     {
       "id": 80,
       "title": "Swingin Party",
       "artist": "Lorde",
-      "album": "Pure Heroine (Extended)"
+      "album": "Pure Heroine"
     },
     {
       "id": 81,
-      "title": "Postcard (feat. Gordi)",
-      "artist": "Troye Sivan",
+      "title": "Postcard",
+      "artist": "Troye Sivan & Gordi",
       "album": "Bloom"
     },
     {
@@ -511,8 +511,8 @@
     },
     {
       "id": 86,
-      "title": "DKLA (feat. Tkay Maidza)",
-      "artist": "Troye Sivan",
+      "title": "DKLA",
+      "artist": "Troye Sivan & Tkay Maidza",
       "album": "Blue Neighbourhood"
     },
     {

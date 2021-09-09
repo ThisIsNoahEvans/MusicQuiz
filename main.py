@@ -5,9 +5,12 @@ import re # Verify inputs
 import time # Delays
 import random # Pick random songs
 from colorama import Fore, Style # Print in colours
+from collections import Counter
 
 global currentUser
 currentUser = ''
+global currentUserID
+currentUserID = 0
 
 # Clear everything on the screen
 def clearScreen():
@@ -30,21 +33,21 @@ def login():
     clearScreen()
     print(f'{Fore.GREEN}--- HELLO! ---\nWelcome back to MusicQuiz.{Style.RESET_ALL}')
 
-    ## Get the JSON user data
+    # Get the JSON user data
     userData = open('user-data.json', 'r') # Open the user data file
     dataJSON = json.load(userData) # Load the file contents as JSON
     userData.close() # Close the JSON file
     users = dataJSON['users'] # A dict with all of the user data
     usernames = {}
     for user in users:
-        usernames[user['name']] = user['pin'] # Add each user's name & PIN to the dict
+        usernames[user['name']] = [user['pin'], user['id']] # Add each user's name, PIN, & ID to the dict
         
 
     validUsername = False
     while not validUsername:
         try:
-            username = input(f'{Fore.MAGENTA}:: Enter your username: {Style.RESET_ALL}')
-            if username not in usernames:
+            username = input(f'{Fore.MAGENTA}:: Enter your username: {Style.RESET_ALL}') # Ask for username
+            if username not in usernames: # If the username does not exist
                 print(f'{Fore.RED}Sorry, that isn\'t a registered user.\nIf you haven\'t played MusicQuiz before, get someone who has to log in and add your account.\n{Style.RESET_ALL}')
             else:
                 validUsername = True
@@ -52,22 +55,24 @@ def login():
             print(f'{Fore.RED}There was an error with your input. Try again.\n{Style.RESET_ALL}')
     
 
-    correctPIN = int(usernames[username]) # Get the correct PIN from the user data
+    correctPIN = int(usernames[username][0]) # Get the correct PIN from the user data
     validPIN = False
     while not validPIN:
         try:
-            pin = int(input(f'{Fore.MAGENTA}:: Enter your PIN: {Style.RESET_ALL}'))
-            if pin != correctPIN:
+            pin = int(input(f'{Fore.MAGENTA}:: Enter your PIN: {Style.RESET_ALL}')) # Ask for the PIN
+            if pin != correctPIN: # If the PIN is not correct
                 print(f'{Fore.RED}Sorry, that isn\'t your PIN. Try again.\n{Style.RESET_ALL}')
             else:
                 validPIN = True
         except:
             print(f'{Fore.RED}There was an error with your input. Try again.\n{Style.RESET_ALL}')
 
-    # Run the main menu with the username
+    # Update the current user info
     global currentUser
     currentUser = username
-    mainMenu()
+    global currentUserID
+    currentUserID = int((usernames[username][1] - 1))
+    mainMenu() # Run the main menu
 
             
     
@@ -140,12 +145,12 @@ def createProfile(fromSetup):
     json.dump(dataJSON, userData) # Dump the updated JSON data
     userData.close() # Close the JSON file
     
-    if fromSetup == True:
+    if fromSetup == True: # Login was run from setup (first user)
         print(f'{Fore.GREEN}Welcome, {name}! Let\'s get you into your first game.{Style.RESET_ALL}')
         global currentUser
         currentUser = name
         time.sleep(2)
-    else:
+    else: # Login was not run from setup (add user)
         print(f'{Fore.GREEN}Welcome, {name}! Your profile is now active.{Style.RESET_ALL}')
         currentUser = name
         time.sleep(2)
@@ -167,13 +172,13 @@ def mainMenu():
                 menuInput = True
         except:
             print(f'{Fore.RED}That isn\'t a valid option. Try again.{Style.RESET_ALL}')
-    
+    # user1
     if choice == 1:
         # New Game
         mainGame()
     elif choice == 2:
         # Top Scores
-        pass
+        topScores()
     elif choice == 3:
         # Switch Player
         login()
@@ -205,57 +210,96 @@ def mainGame():
 
     songNum = 0
     score = 0
+    correctSongs = 0
+    correctSongIDs = []
 
     for song in range(gameLength): # For each song in the game
         clearScreen()
         songNum = songNum + 1
         attempts = 0
-        correctSongs = 0
-        chosenSong = random.choice(songs)
+        chosenSong = random.choice(songs) # Choose a random song
+        # Get the song info
         songID = chosenSong['id']
         songTitle = chosenSong['title']
         songArtist = chosenSong['artist']
         songAlbum = chosenSong['album']
         songTitleLength = len(songTitle)
-
-        wordsInTitle = songTitle.split()
-        letters = [word[0] for word in wordsInTitle]
-        firstLetters = " ".join(letters)
+        wordsInTitle = songTitle.split() # All the words in the song title
+        letters = [word[0] for word in wordsInTitle] # Get the first letters for each word
+        firstLetters = " ".join(letters) # Join all the first letters
         print(f'SONG {songNum}/{gameLength}:\n\n{Fore.LIGHTBLUE_EX}Album: {songAlbum}\nArtist: {songArtist}\nTitle: {firstLetters}\nTitle Character Count: {songTitleLength}{Style.RESET_ALL}')
     
 
         menuInput = False
         while not menuInput:
             try:
-                answer = input(f'{Fore.MAGENTA}:: Enter the full name of this song: {Style.RESET_ALL}')
-                attempts = attempts + 1
-                if answer.lower() != songTitle.lower():
+                answer = input(f'{Fore.MAGENTA}:: Enter the full name of this song: {Style.RESET_ALL}') # Ask for the song name
+                attempts = attempts + 1 # Add to the attempts counter
+                if answer.lower() != songTitle.lower(): # If the answer does not equal the title
                     print(f'{Fore.RED}Incorrect!{Style.RESET_ALL}')
                     if attempts == 1:
                         print('You have one more attempt.')
                     elif attempts == 2:
-                        print(f'Game over!\nYour score was {score}.')
-                        input('Press enter to return to the main menu.')
-                        mainMenu()
+                        print(f'The answer was {songTitle}.\n{Fore.RED}Game over!{Style.RESET_ALL}\n{Fore.GREEN}Your score was {score}.{Style.RESET_ALL}')
+                        menuInput = True
                 else: # Correct
                     correctSongs = correctSongs + 1
-                    if attempts == 1:
+                    correctSongIDs.append(songID)
+                    if attempts == 1: # First attempt = 3 points
                         score = score + 3
-                    elif attempts == 2:
+                    elif attempts == 2: # Second attempt = 1 point
                         score = score + 1
                     print(f'{Fore.GREEN}Correct, well done!\nScore: {score}{Style.RESET_ALL}')
-                    if songNum != gameLength:
+                    if songNum != gameLength: # If this is not the last song
                         input('Press enter to begin the next song.')
                         menuInput = True
-                    else:
+                    else: # Last song; end while
                         menuInput = True
-            except:
+            except: # Error with something
                 print(f'{Fore.RED}There was an error with your input. Try again.{Style.RESET_ALL}')
-        
+    
     clearScreen()
-    print(f'{Fore.GREEN}GAME COMPLETE!{Style.RESET_ALL}\nYour score was {correctSongs}/{gameLength} - {(correctSongs / gameLength) * 100}.\nThank you for playing MusicQuiz!')
-    input(f'{Fore.MAGENTA}Press enter to return to the main menu.{Style.RESET_ALL}')
+    userDataFile = open('user-data.json', 'r') # Open the songs file
+    userData = json.load(userDataFile) # Load the file contents as JSON
+    userDataFile.close() # Close the JSON file
+    currentUserData = userData['users'][currentUserID] # Get the data for the current user
+
+    if int(currentUserData['topScore']) < score: # If the new score is larger than the current score
+        currentUserData['topScore'] = score
+    
+    currentUserData['gamesPlayed'] = currentUserData['gamesPlayed'] + 1 # Add 1 to the games played count
+    for song in correctSongIDs: # For each correctly answered song
+        currentUserData['correctSongs'].append(song) # Add it to the user's correct songs array
+
+    userData['users'][currentUserID] = currentUserData # Update the user data
+    userDataFile = open('user-data.json', 'w') # Open the config file in write
+    json.dump(userData, userDataFile) # Dump the updated JSON data
+    userDataFile.close() # Close the JSON file
+
+    print(f'{Fore.GREEN}GAME COMPLETE!{Style.RESET_ALL}\nYour score was {correctSongs}/{gameLength} - {round(((correctSongs / gameLength) * 100), 0)}%.\nThank you for playing MusicQuiz!')
+    input(f'{Fore.MAGENTA}Press enter to return to the main menu.{Style.RESET_ALL}')    
     mainMenu()        
+
+
+def topScores():
+    clearScreen()
+
+    # Get the JSON user data
+    userData = open('user-data.json', 'r') # Open the user data file
+    dataJSON = json.load(userData) # Load the file contents as JSON
+    userData.close() # Close the JSON file
+    users = dataJSON['users'] # A dict with all of the user data
+    scores = {}
+    for user in users: # For each user
+        scores[user['name']] = user['topScore'] # Add their name and top score to the dict
+   
+    sortedScores = dict(Counter(scores).most_common(5)) # Sort the scores
+    print(f'{Fore.BLUE}--- TOP SCORES ---{Style.RESET_ALL}\n')
+    print('\n'.join("{}: {}".format(k, v) for k, v in sortedScores.items())+'\n') # Print the scored, removing the dict characters
+
+    input(f'{Fore.MAGENTA}Press enter to return to the main menu.{Style.RESET_ALL}')    
+    mainMenu()
+
 
 
 def settings():
@@ -280,8 +324,8 @@ def settings():
         # Remove All Data
         removeAllData()
     elif choice == 3:
-        # About - UNFINISHED
-        print('UNFINISHED')
+        # About
+        about()
 
 
 # Custom amount of songs per game
@@ -350,6 +394,12 @@ def removeAllData():
                 menuInput = True
         except:
             print(f'{Fore.RED}There was an error with your input.{Style.RESET_ALL}')
+
+def about():
+    clearScreen()
+    print(f'{Fore.BLUE}--- MUSICQUIZ ---{Style.RESET_ALL}\nA Computer Science project\nMIT License, available on GitHub\nContact: hello@itsnoahevans.co.uk\n© Noah Evans 2021\n')
+    input(f'{Fore.MAGENTA}Press enter to return to the main menu.{Style.RESET_ALL}')   
+    mainMenu() 
 
 # Run the initial launch sequence
 # when the Python file is run
