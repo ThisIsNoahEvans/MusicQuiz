@@ -2,7 +2,9 @@ import json # Read JSON data
 import os # Clear the screen
 import sys # Exit the program
 import re # Verify inputs
-import time # Delays 
+import time # Delays
+import random # Pick random songs
+from colorama import Fore, Style # Print in colours
 
 global currentUser
 currentUser = ''
@@ -26,7 +28,7 @@ def launch():
 # Run on launch: ask the user to authenticate
 def login():
     clearScreen()
-    print('--- HELLO! ---\nWelcome back to MusicQuiz.')
+    print(f'{Fore.GREEN}--- HELLO! ---\nWelcome back to MusicQuiz.{Style.RESET_ALL}')
 
     ## Get the JSON user data
     userData = open('user-data.json', 'r') # Open the user data file
@@ -41,26 +43,26 @@ def login():
     validUsername = False
     while not validUsername:
         try:
-            username = input(':: Enter your username: ')
+            username = input(f'{Fore.MAGENTA}:: Enter your username: {Style.RESET_ALL}')
             if username not in usernames:
-                print('Sorry, that isn\'t a registered user.\nIf you haven\'t played MusicQuiz before, get someone who has to log in and add your account.\n')
+                print(f'{Fore.RED}Sorry, that isn\'t a registered user.\nIf you haven\'t played MusicQuiz before, get someone who has to log in and add your account.\n{Style.RESET_ALL}')
             else:
                 validUsername = True
         except:
-            print('There was an error with your input. Try again.\n')
+            print(f'{Fore.RED}There was an error with your input. Try again.\n{Style.RESET_ALL}')
     
 
     correctPIN = int(usernames[username]) # Get the correct PIN from the user data
     validPIN = False
     while not validPIN:
         try:
-            pin = int(input(':: Enter your PIN: '))
+            pin = int(input(f'{Fore.MAGENTA}:: Enter your PIN: {Style.RESET_ALL}'))
             if pin != correctPIN:
-                print('Sorry, that isn\'t your PIN. Try again.\n')
+                print(f'{Fore.RED}Sorry, that isn\'t your PIN. Try again.\n{Style.RESET_ALL}')
             else:
                 validPIN = True
         except:
-            print('There was an error with your input. Try again.\n')
+            print(f'{Fore.RED}There was an error with your input. Try again.\n{Style.RESET_ALL}')
 
     # Run the main menu with the username
     global currentUser
@@ -73,8 +75,8 @@ def login():
 # Prints welcome message, creates profile, and marks setup as complete
 def setup():
     clearScreen()
-    print('--- WELCOME TO MUSICQUIZ! ---\nReady to test your music knowledge?\n\nTo set up your profile, we need a name and PIN code from you. This will keep your progress separate, so multiple people can play MusicQuiz.')
-    input(':: Press enter to continue.')
+    print(f'{Fore.BLUE}--- WELCOME TO MUSICQUIZ! ---{Style.RESET_ALL}\nReady to test your music knowledge?\n\nTo set up your profile, we need a name and PIN code from you. This will keep your progress separate, so multiple people can play MusicQuiz.')
+    input(f'{Fore.MAGENTA}:: Press enter to continue.{Style.RESET_ALL}')
     createProfile(fromSetup=True) # Create the first profile
 
     config = open('config.json', 'r') # Open the config file
@@ -89,30 +91,30 @@ def setup():
 # Create a profile by taking a name and PIN
 def createProfile(fromSetup):
     clearScreen()
-    print('Let\'s set up your profile!\nYour username will be used to log you in.\nPlease enter it without any spaces or special characters.')
+    print(f'{Fore.BLUE}--- PROFILE SETUP ---{Style.RESET_ALL}\nYour username will be used to log you in.\nPlease enter it without any spaces or special characters.')
     
     nameSet = False
     while not nameSet:
         try:
-            name = input(':: Enter your username: ')
+            name = input(f'{Fore.MAGENTA}:: Enter your username: {Style.RESET_ALL}')
             regexp = re.compile('[^0-9a-zA-Z]+') # Compile the RegEx filter of valid chars
             if regexp.search(name): # If the name contains invalid chars
-                print('Sorry, that username contains invalid characters.\nYou can only use alphanumeric characters (A-Z, 1-9).\n')
+                print(f'{Fore.RED}Sorry, that username contains invalid characters.\nYou can only use alphanumeric characters (A-Z, 1-9).\n{Style.RESET_ALL}')
             else: # Correct username
                 nameSet = True
         except:
-            print('You didn\'t enter a valid username. Try again.\n')
+            print(f'{Fore.RED}You didn\'t enter a valid username. Try again.\n{Style.RESET_ALL}')
     
     pinSet = False
     while not pinSet:
         try:
-            pin = int(input(':: Enter a 4-digit PIN code: ')) # Ask for an int
+            pin = int(input(f'{Fore.MAGENTA}:: Enter a 4-digit PIN code: {Style.RESET_ALL}')) # Ask for an int
             if (len(str(pin))) != 4: # PIN is not 4 digits
-                print('Your code wasn\'t 4 digits. Try again.')
+                print(f'{Fore.RED}Your code wasn\'t 4 digits. Try again.{Style.RESET_ALL}')
             else: # Pin is 4 digits
                 pinSet = True # Exit the while loop
         except: # Error with value - likely entered non-numeric characters
-            print('You didn\'t enter a valid PIN code. Try again.')
+            print(f'{Fore.RED}You didn\'t enter a valid PIN code. Try again.{Style.RESET_ALL}')
     
     ## Get the JSON user data
     userData = open('user-data.json', 'r') # Open the user data file
@@ -139,35 +141,36 @@ def createProfile(fromSetup):
     userData.close() # Close the JSON file
     
     if fromSetup == True:
-        print(f'Welcome, {name}! Let\'s get you into your first game.')
+        print(f'{Fore.GREEN}Welcome, {name}! Let\'s get you into your first game.{Style.RESET_ALL}')
         global currentUser
         currentUser = name
         time.sleep(2)
     else:
-        print(f'Welcome, {name}! Your profile is now active.')
+        print(f'{Fore.GREEN}Welcome, {name}! Your profile is now active.{Style.RESET_ALL}')
         currentUser = name
-        mainMenu()
         time.sleep(2)
+        mainMenu()
+        
 
 # The main menu
 # To be displayed after setup/a game
 def mainMenu():
     clearScreen()
-    print(f'--- MAIN MENU ---\nHi, {currentUser}!\n1 - New Game\n2 - View Top Scores\n3 - Switch Player\n4 - Add Player\n5 - Settings\n6 - Quit')
+    print(f'{Fore.BLUE}--- MAIN MENU ---\nHi, {currentUser}!{Style.RESET_ALL}\n1 - New Game\n2 - View Top Scores\n3 - Switch Player\n4 - Add Player\n5 - Settings\n6 - Quit')
     menuInput = False
     while not menuInput:
         try:
-            choice = int(input(':: Enter an option: '))
+            choice = int(input(f'{Fore.MAGENTA}:: Enter an option: {Style.RESET_ALL}'))
             if not 1 <= choice <= 6:
-                print('That isn\'t a valid option. Try again.')
+                print(f'{Fore.RED}That isn\'t a valid option. Try again.{Style.RESET_ALL}')
             else:
                 menuInput = True
         except:
-            print('That isn\'t a valid option. Try again.')
+            print(f'{Fore.RED}That isn\'t a valid option. Try again.{Style.RESET_ALL}')
     
     if choice == 1:
         # New Game
-        pass
+        mainGame()
     elif choice == 2:
         # Top Scores
         pass
@@ -186,21 +189,89 @@ def mainMenu():
         print('Goodbye! Thank you for playing.')
         sys.exit()
 
+# The actual game
+def mainGame():
+    clearScreen()
+    print(f'{Fore.BLUE}--- NEW GAME ---{Style.RESET_ALL}\nTime to play a game of MusicQuiz!\nYou will be given the artist and album name, plus the first letter of each word in the song title.\nYou will have two chances to guess the correct title.\n')
+    input(f'{Fore.MAGENTA}:: Press enter to start the game.{Style.RESET_ALL}')
+    config = open('config.json', 'r') # Open the config file
+    configJSON = json.load(config) # Load the file contents as JSON
+    config.close() # Close the JSON file
+    gameLength = configJSON['songsPerGame'] # Get the songs per game choice
+
+    songsFile = open('songs.json', 'r') # Open the songs file
+    songs = json.load(songsFile) # Load the file contents as JSON
+    songsFile.close() # Close the JSON file
+
+    songNum = 0
+    score = 0
+
+    for song in range(gameLength): # For each song in the game
+        clearScreen()
+        songNum = songNum + 1
+        attempts = 0
+        correctSongs = 0
+        chosenSong = random.choice(songs)
+        songID = chosenSong['id']
+        songTitle = chosenSong['title']
+        songArtist = chosenSong['artist']
+        songAlbum = chosenSong['album']
+        songTitleLength = len(songTitle)
+
+        wordsInTitle = songTitle.split()
+        letters = [word[0] for word in wordsInTitle]
+        firstLetters = " ".join(letters)
+        print(f'SONG {songNum}/{gameLength}:\n\n{Fore.LIGHTBLUE_EX}Album: {songAlbum}\nArtist: {songArtist}\nTitle: {firstLetters}\nTitle Character Count: {songTitleLength}{Style.RESET_ALL}')
+    
+
+        menuInput = False
+        while not menuInput:
+            try:
+                answer = input(f'{Fore.MAGENTA}:: Enter the full name of this song: {Style.RESET_ALL}')
+                attempts = attempts + 1
+                if answer.lower() != songTitle.lower():
+                    print(f'{Fore.RED}Incorrect!{Style.RESET_ALL}')
+                    if attempts == 1:
+                        print('You have one more attempt.')
+                    elif attempts == 2:
+                        print(f'Game over!\nYour score was {score}.')
+                        input('Press enter to return to the main menu.')
+                        mainMenu()
+                else: # Correct
+                    correctSongs = correctSongs + 1
+                    if attempts == 1:
+                        score = score + 3
+                    elif attempts == 2:
+                        score = score + 1
+                    print(f'{Fore.GREEN}Correct, well done!\nScore: {score}{Style.RESET_ALL}')
+                    if songNum != gameLength:
+                        input('Press enter to begin the next song.')
+                        menuInput = True
+                    else:
+                        menuInput = True
+            except:
+                print(f'{Fore.RED}There was an error with your input. Try again.{Style.RESET_ALL}')
+        
+    clearScreen()
+    print(f'{Fore.GREEN}GAME COMPLETE!{Style.RESET_ALL}\nYour score was {correctSongs}/{gameLength} - {(correctSongs / gameLength) * 100}.\nThank you for playing MusicQuiz!')
+    input(f'{Fore.MAGENTA}Press enter to return to the main menu.{Style.RESET_ALL}')
+    mainMenu()        
+
 
 def settings():
     clearScreen()
-    print(f'--- SETTINGS ---\nChoose an option:\n1 - Change Songs Per Game\n2 - Remove All Data\n3 - About')
+    print(f'{Fore.BLUE}--- SETTINGS ---{Style.RESET_ALL}\nChoose an option:\n1 - Change Songs Per Game\n2 - Remove All Data\n3 - About')
     
     menuInput = False
     while not menuInput:
         try:
-            choice = int(input(':: Enter an option: '))
+            choice = int(input(f'{Fore.MAGENTA}:: Enter an option: {Style.RESET_ALL}'))
             if not 1 <= choice <= 4:
-                print('That isn\'t a valid option. Try again.')
+                print(f'{Fore.RED}That isn\'t a valid option. Try again.{Style.RESET_ALL}')
             else:
                 menuInput = True
         except:
-            print('That isn\'t a valid option. Try again.')
+            print(f'{Fore.RED}That isn\'t a valid option. Try again.{Style.RESET_ALL}')
     
     if choice == 1:
         # Songs Per Game
@@ -222,18 +293,18 @@ def songsPerGame():
     config.close() # Close the JSON file
     currentChoice = configJSON['songsPerGame']
 
-    print(f'--- SONGS PER GAME ---\nEach game can have between 5 and 20 songs.\nThe default is 10. Current choice: {currentChoice}.')
+    print(f'{Fore.BLUE}--- SONGS PER GAME ---{Style.RESET_ALL}\nEach game can have between 5 and 20 songs.\nThe default is 10. Current choice: {currentChoice}.')
     
     menuInput = False
     while not menuInput:
         try:
-            choice = int(input(':: Pick your game length: '))
+            choice = int(input(f'{Fore.MAGENTA}:: Pick your game length: {Style.RESET_ALL}'))
             if not 5 <= choice <= 20:
-                print('Your choice must be between 5 and 20 songs.')
+                print(f'{Fore.RED}Your choice must be between 5 and 20 songs.{Style.RESET_ALL}')
             else:
                 menuInput = True
         except:
-            print('That isn\'t a valid option. Try again.')
+            print(f'{Fore.RED}That isn\'t a valid number. Try again.{Style.RESET_ALL}')
 
 
     configJSON['songsPerGame'] = choice # Update the songs per game in the config JSON
@@ -241,14 +312,14 @@ def songsPerGame():
     json.dump(configJSON, config) # Dump the updated JSON data
     config.close() # Close the JSON file
 
-    print(f'\nGames will now last for {choice} songs.\nReturning to the main menu...')
+    print(f'{Fore.GREEN}\nGames will now last for {choice} songs.\nReturning to the main menu...{Style.RESET_ALL}')
     time.sleep(1)
-    mainMenu(currentUser)  
+    mainMenu()  
 
 # Remove and reset the game
 def removeAllData():
     clearScreen()
-    print(f'--- REMOVE ALL DATA ---\nAll of your data from MusicQuiz will be removed.\nThis cannot be undone.')
+    print(f'{Fore.BLUE}--- REMOVE ALL DATA ---{Style.RESET_ALL}\nAll of your data from MusicQuiz will be removed.\nThis cannot be undone.')
 
     defaultConfig = '{"setup-complete": false, "lastUserID": 0, "songsPerGame": 10}'
     defaultUsers = '{"users": []}'
@@ -256,7 +327,7 @@ def removeAllData():
     menuInput = False
     while not menuInput:
         try:
-            choice = input(':: Type `DELETE` to confirm that you would like to remove all data and reset MusicQuiz. ')
+            choice = input(f'{Fore.MAGENTA}:: Type `DELETE` to confirm that you would like to remove all data and reset MusicQuiz. {Style.RESET_ALL}')
             if choice == 'DELETE':
                 config = open('config.json', 'w') # Open the config file in write
                 config.seek(0)
@@ -270,20 +341,15 @@ def removeAllData():
                 userConfig.truncate()
                 userConfig.close()
 
-                print('All data has been deleted.\n\nThank you for playing MusicQuiz.')
+                print(f'{Fore.GREEN}All data has been deleted.\n\nThank you for playing MusicQuiz.{Style.RESET_ALL}')
                 menuInput = True
             else:
-                print('Deletion cancelled. Returning to the main menu...')
+                print(f'{Fore.RED}Deletion cancelled. Returning to the main menu...{Style.RESET_ALL}')
                 time.sleep(1)
                 mainMenu()
                 menuInput = True
-        except ValueError():
-            print('There was an error with your input.')
-
-    
-  
-
-    
+        except:
+            print(f'{Fore.RED}There was an error with your input.{Style.RESET_ALL}')
 
 # Run the initial launch sequence
 # when the Python file is run
