@@ -4,6 +4,7 @@ import sys # Exit the program
 import re # Verify inputs
 import time # Delays 
 
+global currentUser
 currentUser = ''
 
 # Clear everything on the screen
@@ -64,8 +65,7 @@ def login():
     # Run the main menu with the username
     global currentUser
     currentUser = username
-    print(currentUser)
-    mainMenu(username)
+    mainMenu()
 
             
     
@@ -74,6 +74,7 @@ def login():
 def setup():
     clearScreen()
     print('--- WELCOME TO MUSICQUIZ! ---\nReady to test your music knowledge?\n\nTo set up your profile, we need a name and PIN code from you. This will keep your progress separate, so multiple people can play MusicQuiz.')
+    input(':: Press enter to continue.')
     createProfile(fromSetup=True) # Create the first profile
 
     config = open('config.json', 'r') # Open the config file
@@ -83,6 +84,7 @@ def setup():
     config = open('config.json', 'w') # Open the file in write
     json.dump(data, config) # Dump the updated JSON data
     config.close() # Close the file
+    mainMenu()
 
 # Create a profile by taking a name and PIN
 def createProfile(fromSetup):
@@ -138,13 +140,18 @@ def createProfile(fromSetup):
     
     if fromSetup == True:
         print(f'Welcome, {name}! Let\'s get you into your first game.')
+        global currentUser
+        currentUser = name
+        time.sleep(2)
     else:
         print(f'Welcome, {name}! Your profile is now active.')
-        mainMenu(name)
+        currentUser = name
+        mainMenu()
+        time.sleep(2)
 
 # The main menu
 # To be displayed after setup/a game
-def mainMenu(name):
+def mainMenu():
     clearScreen()
     print(f'--- MAIN MENU ---\nHi, {currentUser}!\n1 - New Game\n2 - View Top Scores\n3 - Switch Player\n4 - Add Player\n5 - Settings\n6 - Quit')
     menuInput = False
@@ -182,7 +189,7 @@ def mainMenu(name):
 
 def settings():
     clearScreen()
-    print(f'--- SETTINGS ---\nChoose an option:\n1 - Change Songs Per Game\n2 - Delete Player\n3 - Remove All Data\n4 - About')
+    print(f'--- SETTINGS ---\nChoose an option:\n1 - Change Songs Per Game\n2 - Remove All Data\n3 - About')
     
     menuInput = False
     while not menuInput:
@@ -199,17 +206,14 @@ def settings():
         # Songs Per Game
         songsPerGame()
     elif choice == 2:
-        # Delete Player
-        pass
-    elif choice == 3:
         # Remove All Data
-        pass
-    elif choice == 4:
-        # About
-        pass
+        removeAllData()
+    elif choice == 3:
+        # About - UNFINISHED
+        print('UNFINISHED')
 
 
-# General settings for gameplay
+# Custom amount of songs per game
 def songsPerGame():
     clearScreen()
 
@@ -239,9 +243,47 @@ def songsPerGame():
 
     print(f'\nGames will now last for {choice} songs.\nReturning to the main menu...')
     time.sleep(1)
-    mainMenu(currentUser)
+    mainMenu(currentUser)  
 
+# Remove and reset the game
+def removeAllData():
+    clearScreen()
+    print(f'--- REMOVE ALL DATA ---\nAll of your data from MusicQuiz will be removed.\nThis cannot be undone.')
 
+    defaultConfig = '{"setup-complete": false, "lastUserID": 0, "songsPerGame": 10}'
+    defaultUsers = '{"users": []}'
+
+    menuInput = False
+    while not menuInput:
+        try:
+            choice = input(':: Type `DELETE` to confirm that you would like to remove all data and reset MusicQuiz. ')
+            if choice == 'DELETE':
+                config = open('config.json', 'w') # Open the config file in write
+                config.seek(0)
+                config.write(defaultConfig)
+                config.truncate()
+                config.close()
+                
+                userConfig = open('user-data.json', 'w') # Open the config file in write
+                userConfig.seek(0)
+                userConfig.write(defaultUsers)
+                userConfig.truncate()
+                userConfig.close()
+
+                print('All data has been deleted.\n\nThank you for playing MusicQuiz.')
+                menuInput = True
+            else:
+                print('Deletion cancelled. Returning to the main menu...')
+                time.sleep(1)
+                mainMenu()
+                menuInput = True
+        except ValueError():
+            print('There was an error with your input.')
+
+    
+  
+
+    
 
 # Run the initial launch sequence
 # when the Python file is run
